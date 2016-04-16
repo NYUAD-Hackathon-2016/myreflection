@@ -25,7 +25,17 @@ input[type=text] {
   width: 335px;
 }
 
-.btn:hover {
+.btn-2{
+  background-color:Transparent;
+  border:none;
+  color:#EAA172;
+  font-family: 'Pompiere', cursive;
+  font-size:20px;
+  margin: 0 auto;
+  text-align:center;
+}
+
+.btn:hover, .btn-2:hover {
   background-color:yellow;
 }
 
@@ -77,11 +87,6 @@ h5 {
   font-size: 22px;
   text-align:center;
   text-decoration: italic;
-}
-
-h6 {
-  font-size:60px;
-  text-align:center;
 }
 
 input[type=text name=tweet] {

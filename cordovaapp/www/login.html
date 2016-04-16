@@ -27,24 +27,23 @@
   <body ng-app="starter" ng-controller='AppCtrl'>   
     <h4>
       <img src= "http://s30.postimg.org/7vv2ici29/Logo_RR.png" alt="logo"style="width:510px;height:250px;">
-      <!--<font color="#EAA172">M Y</font>&nbsp;&nbsp;<font color="yellow">R</font> E F L E C T I O N --!>
     </h4>
     <h5>
       Monitor your online behavior.
     </h5>
     <div class="nav">
-      <a href='home.html'><u>H O M E</u></a> | <a href='viz.html'><u>V I S U A L I Z E</u></a>
+      <span style="display: inline">
+        <button class="btn-2" type="button" name="login" value ="" onclick="window.location.href='login.html'"><u>H O M E</u></button> |
+        <button class="btn-2" type="button" name="login" value ="" onclick="window.location.href='viz.html'"><u>V I S U A L I Z E</u></button>
+      </span>
     </div>
     <br>
     <form method = "GET" action = "#" align="center">
       <input type="text" name="tweet" id="textBox" placeHolder="Compose tweet...">
     </form>
-    <h6>
-      (EMOJI) | (TEXT)
-    </h6>
-    <img id="happy" src="img/Positive.png" height="300" width="300">
-    <img id="netural" src="img/Neutral.png" height="300" width="300">
-    <img id="sad" src="img/Negative.png" height="300" width="300">
+    <img id="happy" src="img/placeholderPositive.png" height="300" width="300">
+    <img id="netural" src="img/placeholderNetural.png" height="300" width="300">
+    <img id="sad" src="img/placeholderSad.png" height="300" width="300">
 
     <button class="btn" type="button" name="login" value ="" onclick="window.location.href='/send'">
       S E N D T W E E T ?
