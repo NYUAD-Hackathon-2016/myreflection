@@ -12,30 +12,28 @@ function rgbToHex(r, g, b) {
   return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
 }
 
-function getSentimentFromTweet(tweet){
-
-        console.log("I am in functiuo");
-        //var tempTweet = "Life is life. I am full of love!";ue;
-
-        $.ajax({
-          type: "POST",
-          url: "http://localhost:3000/post",
-          data: JSON.stringify({ status: tweet }),
-          contentType: "application/json; charset=utf-8",
-          dataType: "json",
-          success: function(data) {
-            sentimentValue = data.status;
-            sentimentList.push(data.status);
-          },
-          error: function(error) {
-            console.log("ERROR");
-            console.log(error);
-            sentimentList.push(null);
-          }
-        });
+function getSentimentFromTweet(tweet, callback){
+  console.log("I am in function");
+  //var tempTweet = "Life is life. I am full of love!";ue;
+  $.ajax({
+    type: "POST",
+    url: "http://localhost:3000/post",
+    data: JSON.stringify({ status: tweet }),
+    contentType: "application/json; charset=utf-8",
+    dataType: "json",
+    success: function(data) {
+      sentimentValue = data.status;
+      if(callback){
+        callback();
+      }
+    },
+    error: function(error) {
+      console.log("ERROR");
+      console.log(error);
+    }
+  });
 }
 
-window.addEventListener("keyup", checkKeyPressed, false);
 
 function check(length, callback) {
   if (sentimentList.length === length) {
@@ -93,33 +91,45 @@ var getSentimentFromList = function(list, callback){
 }
 window.getSentimentFromList = getSentimentFromList;
 
+$(window).on("input", function() {
+    updateText();
 
-function checkKeyPressed(e) {
-  var text = $('#textBox').val();
-  getSentimentFromTweet(text);
-  console.log(sentimentValue);
-  console.log(text);
-  $('#textBox').css( "border", "solid" );
-  $('#textBox').css( "border-width", "10px");
-  $('#happy').css( "display", "none");
-  $('#sad').css( "display", "none");
-  $('#netural').css( "display", "none");
-  if (sentimentValue > 0){
-    $('#textBox').css( "border-color", "#66FF00");
-    $('#happy').css( "display", "inline");
-    $('#sad').css( "display", "none");
-    $('#netural').css( "display", "none");
-  } else if (sentimentValue < 0){
-    $('#textBox').css( "border-color", "#FF0033");
-    $('#sad').css( "display", "inline");
-    $('#happy').css( "display", "none");
-    $('#netural').css( "display", "none");
-  }else{
-    $('#textBox').css( "border-color", "#3300FF");
-    $('#netural').css( "display", "inline");
-    $('#happy').css( "display", "none");
-    $('#sad').css( "display", "none");
-  }
+});
+
+function updateText(){
+    var text = $('#textBox').val();
+     
+      getSentimentFromTweet(text, function(){
+
+        $('#textBox').css( "border", "solid" );
+        $('#textBox').css( "border-width", "10px");
+        
+        $('#happy').css( "display", "none");
+        $('#sad').css( "display", "none");
+        $('#netural').css( "display", "none");
+
+
+        if (sentimentValue > 0){
+          $('#textBox').css( "border-color", "#66FF00");
+
+          $('#happy').css( "display", "inline");
+          $('#sad').css( "display", "none");
+          $('#netural').css( "display", "none");
+
+        } else if (sentimentValue < 0){
+          $('#textBox').css( "border-color", "#FF0033");
+
+          $('#sad').css( "display", "inline");
+          $('#happy').css( "display", "none");
+          $('#netural').css( "display", "none");
+
+        }else{
+          $('#textBox').css( "border-color", "#3300FF");
+          $('#netural').css( "display", "inline");
+          $('#happy').css( "display", "none");
+          $('#sad').css( "display", "none");
+        }
+      });
 }
 /*
    red = 0;
