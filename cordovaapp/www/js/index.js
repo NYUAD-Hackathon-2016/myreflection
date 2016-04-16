@@ -37,9 +37,6 @@ var app = {
 
         $.ajax({
           type: "POST",
-          headers: {
-            'Access-Control-Allow-Origin': '*'
-          },
           url: "http://localhost:3000/post",
           data: JSON.stringify({ status: "I'm working!"}),
           contentType: "application/json; charset=utf-8",
