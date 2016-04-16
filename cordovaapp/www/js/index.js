@@ -1,3 +1,5 @@
+alert("how?");
+getSentimentFromTweet("I love the world!");
 /*
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
@@ -35,7 +37,24 @@ var app = {
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
 
-        var tweet = "Life is life. I am full of love!";
+
+    },
+    // Update DOM on a Received Event
+    receivedEvent: function(id) {
+        var parentElement = document.getElementById(id);
+        var listeningElement = parentElement.querySelector('.listening');
+        var receivedElement = parentElement.querySelector('.received');
+
+        listeningElement.setAttribute('style', 'display:none;');
+        receivedElement.setAttribute('style', 'display:block;');
+
+        console.log('Received Event: ' + id);
+    }
+};
+
+function getSentimentFromTweet(tweet){
+        console.log("I am in functiuo");
+        //var tempTweet = "Life is life. I am full of love!";
         var sentimentValue = 10;
         $.ajax({
           type: "POST",
@@ -54,19 +73,6 @@ var app = {
           }
         });
 
-
-    },
-    // Update DOM on a Received Event
-    receivedEvent: function(id) {
-        var parentElement = document.getElementById(id);
-        var listeningElement = parentElement.querySelector('.listening');
-        var receivedElement = parentElement.querySelector('.received');
-
-        listeningElement.setAttribute('style', 'display:none;');
-        receivedElement.setAttribute('style', 'display:block;');
-
-        console.log('Received Event: ' + id);
-    }
-};
+}
 
 app.initialize();
