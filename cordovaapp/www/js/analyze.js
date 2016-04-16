@@ -1,4 +1,5 @@
 var sentimentValue;
+var sentimentList;
 var positiveList = ["That sounds good! Go ahead and share it with the world!", "I am sure someone would be happy to read this.", "This brings a smile to the heart."];
 var negatveList  = ["These can hurt someone.", "Readings this can spark a fight.", "Please read what you wrote once again."];
 
@@ -34,27 +35,61 @@ function getSentimentFromTweet(tweet, callback){
 }
 
 
-function getSentimentFromList(list){
-  console.log("I am in function");
-  positive_count = 0;
-  negative_count = 0;
-  netrual_count = 0;
-  average = 0;
-  //var tempTweet = "Life is life. I am full of love!";ue;
-  for(var i = 0; i < list.length; i++ ){
-    getSentimentFromTweet(list[i]);
-    average = sentimentValue;
-    if(sentimentValue > 0){
-      positive_count++;
-    } else if (sentimentValue < 0 ){
-      negative_count++;
-    }else{
-      negative_count++;
-    }
+function check(length, callback) {
+  if (sentimentList.length === length) {
+    positive_count = 0;
+    negative_count = 0;
+    neutral_count = 0;
+    average = 0;
+    for(var i = 0; i < sentimentList.length; i++ ){
+          var sentimentValue = sentimentList[i];
+          average = average + sentimentValue;
+          if(sentimentValue > 0){
+            positive_count++;
+          } else if (sentimentValue < 0 ){
+            negative_count++;
+          }else{
+            neutral_count++;
+          }
+        }
+        average = average / sentimentList.length;
+
+        return callback([positive_count, negative_count, neutral_count, average]);
+  } else {
+    setInterval(check.bind(null, length, callback), 1000);
   }
-  average = average / list.length;
-  return [positive_count, negative_count, netrual_count, average];
 }
+var getSentimentFromList = function(list, callback){
+        console.log("I am in function");
+
+        positive_count = 0;
+        negative_count = 0;
+        neutral_count = 0;
+        average = 0;
+
+        sentimentList = [];
+
+        //var tempTweet = "Life is life. I am full of love!";ue;
+        for(var i = 0; i < list.length; i++ ){
+          getSentimentFromTweet(list[i]);
+          average = average + sentimentValue;
+          if(sentimentValue > 0){
+            positive_count++;
+          } else if (sentimentValue < 0 ){
+            negative_count++;
+          }else{
+            neutral_count++;
+          }
+        }
+        average = average / list.length;
+
+        if (callback) {
+          setInterval(check.bind(null, list.length, callback), 1000);
+        }
+
+        return [positive_count, negative_count, neutral_count];
+}
+window.getSentimentFromList = getSentimentFromList;
 
 $(window).on("input", function() {
     updateText();
@@ -94,7 +129,7 @@ function updateText(){
           $('#happy').css( "display", "none");
           $('#sad').css( "display", "none");
         }
-      }); 
+      });
 }
 /*
    red = 0;
