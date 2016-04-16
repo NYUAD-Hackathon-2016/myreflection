@@ -4,3 +4,6 @@ grocery/node_modules/
 myreflection/platforms
 myreflection/plugins
 cordovaapp/platform
+cordovaapp/platforms/
+platforms/
+cordovaapp/platforms
