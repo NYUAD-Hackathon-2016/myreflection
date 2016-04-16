@@ -44,6 +44,12 @@ angular.module('starter', ['ionic', 'ngCordova', 'ngTwitter'])
     }
   });
 
+  $scope.showHomeTimeline = function() {
+  $twitterApi.getHomeTimeline( {count : 100} ).then(function(data) {
+    document.getElementById("displayer").innerHTML = JSON.stringify(data);
+  });
+};
+
   /*.run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
     if(window.cordova && window.cordova.plugins.Keyboard) {
