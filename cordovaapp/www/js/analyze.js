@@ -56,7 +56,7 @@ function check(length, callback) {
         }
         average = average / sentimentList.length;
 
-        return callback([positive_count, negative_count, neutral_count, average]);
+        return callback([positive_count, negative_count, neutral_count]);
   } else {
     setInterval(check.bind(null, length, callback), 1000);
   }
