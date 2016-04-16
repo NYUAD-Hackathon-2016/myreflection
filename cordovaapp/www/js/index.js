@@ -34,6 +34,23 @@ var app = {
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
+
+        $.ajax({
+          type: "POST",
+          url: "http://localhost:3000/post",
+          data: JSON.stringify({ status: "I'm working!"}),
+          contentType: "application/json; charset=utf-8",
+          dataType: "json",
+          success: function(data) {
+            console.log("SUCCESS")
+            console.log(data)
+          },
+          error: function(error) {
+            console.log("ERROR")
+            console.log(error)
+          }
+        })
+
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
