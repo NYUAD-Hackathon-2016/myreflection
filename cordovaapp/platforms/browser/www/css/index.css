@@ -1,8 +1,5 @@
 /*my stuff!*/
 /*------------------------------------*/
-body {
-  background-color: #008080;
-}
 
 .btn, input[type=submit]  {
   background-color:#EAA172;
@@ -20,6 +17,26 @@ body {
   background-color:yellow;
 }
 
+a, .nav {
+  color:#EAA172;
+  font-family: 'Pompiere', cursive;
+  font-size: 23px;
+  text-align: center;
+  text-decoration: none;
+}
+
+a:hover {
+  color:yellow;
+}
+
+a:active {
+ color:black;
+}
+
+body {
+  background-color: #008080;
+}
+
 h2 {
   color:#D3D3D3;
   font-family: 'Pompiere', cursive;
@@ -33,6 +50,39 @@ h3 {
   font-size: 25px;
   text-align:center;
   text-decoration: italic;
+}
+
+h4 {
+  color:#D3D3D3;
+  font-family: 'Pompiere', cursive;
+  font-size: 45px;
+  text-align:center;
+}
+
+h5 {
+  color:#D3D3D3;
+  font-family: 'Pompiere', cursive;
+  font-size: 22px;
+  line-height:23px;
+  text-align:center;
+  text-decoration: italic;
+}
+
+h6 {
+  font-size:60px;
+  text-align:center;
+}
+
+input[type=text name=tweet] {
+  background-color:white;
+  border:none;
+  display: block;
+  font-family: 'Pompiere', cursive;
+  font-size:20px;
+  line-height: 70px;
+  margin: 0 auto;
+  text-align:center;
+  width: 335px;
 }
 /*------------------------------------*/
 
