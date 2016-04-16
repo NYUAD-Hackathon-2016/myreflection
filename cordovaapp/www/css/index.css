@@ -39,6 +39,11 @@ input[type=text] {
   background-color:yellow;
 }
 
+.ui-icon-loading h1{
+  visibility:hidden;
+
+}
+
 a, .nav {
   color:#EAA172;
   font-family: 'Pompiere', cursive;

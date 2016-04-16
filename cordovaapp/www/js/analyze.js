@@ -13,26 +13,22 @@ function rgbToHex(r, g, b) {
 }
 
 function getSentimentFromTweet(tweet){
-
-        console.log("I am in functiuo");
-        //var tempTweet = "Life is life. I am full of love!";ue;
-
-        $.ajax({
-          type: "POST",
-          url: "http://localhost:3000/post",
-          data: JSON.stringify({ status: tweet }),
-          contentType: "application/json; charset=utf-8",
-          dataType: "json",
-          success: function(data) {
-            sentimentValue = data.status;
-            sentimentList.push(data.status);
-          },
-          error: function(error) {
-            console.log("ERROR");
-            console.log(error);
-            sentimentList.push(null);
-          }
-        });
+  $.ajax({
+    type: "POST",
+    url: "http://localhost:3000/post",
+    data: JSON.stringify({ status: tweet }),
+    contentType: "application/json; charset=utf-8",
+    dataType: "json",
+    success: function(data) {
+      sentimentValue = data.status;
+      sentimentList.push(data.status);
+    },
+    error: function(error) {
+      console.log("ERROR");
+      console.log(error);
+      sentimentList.push(null);
+    }
+  });
 }
 
 window.addEventListener("keyup", checkKeyPressed, false);
@@ -44,52 +40,49 @@ function check(length, callback) {
     neutral_count = 0;
     average = 0;
     for(var i = 0; i < sentimentList.length; i++ ){
-          var sentimentValue = sentimentList[i];
-          average = average + sentimentValue;
-          if(sentimentValue > 0){
-            positive_count++;
-          } else if (sentimentValue < 0 ){
-            negative_count++;
-          }else{
-            neutral_count++;
-          }
-        }
-        average = average / sentimentList.length;
+      var sentimentValue = sentimentList[i];
+      average = average + sentimentValue;
+      if(sentimentValue > 0){
+        positive_count++;
+      } else if (sentimentValue < 0 ){
+        negative_count++;
+      }else{
+        neutral_count++;
+      }
+    }
+    average = average / sentimentList.length;
 
-        return callback([positive_count, negative_count, neutral_count, average]);
+    return callback([positive_count, negative_count, neutral_count, average]);
   } else {
     setInterval(check.bind(null, length, callback), 1000);
   }
 }
 var getSentimentFromList = function(list, callback){
-        console.log("I am in function");
+  positive_count = 0;
+  negative_count = 0;
+  neutral_count = 0;
+  average = 0;
 
-        positive_count = 0;
-        negative_count = 0;
-        neutral_count = 0;
-        average = 0;
+  sentimentList = [];
 
-        sentimentList = [];
+  for(var i = 0; i < list.length; i++ ){
+    getSentimentFromTweet(list[i]);
+    average = average + sentimentValue;
+    if(sentimentValue > 0){
+      positive_count++;
+    } else if (sentimentValue < 0 ){
+      negative_count++;
+    }else{
+      neutral_count++;
+    }
+  }
+  average = average / list.length;
 
-        //var tempTweet = "Life is life. I am full of love!";ue;
-        for(var i = 0; i < list.length; i++ ){
-          getSentimentFromTweet(list[i]);
-          average = average + sentimentValue;
-          if(sentimentValue > 0){
-            positive_count++;
-          } else if (sentimentValue < 0 ){
-            negative_count++;
-          }else{
-            neutral_count++;
-          }
-        }
-        average = average / list.length;
+  if (callback) {
+    setInterval(check.bind(null, list.length, callback), 1000);
+  }
 
-        if (callback) {
-          setInterval(check.bind(null, list.length, callback), 1000);
-        }
-
-        return [positive_count, negative_count, neutral_count];
+  return [positive_count, negative_count, neutral_count];
 }
 window.getSentimentFromList = getSentimentFromList;
 
@@ -121,6 +114,24 @@ function checkKeyPressed(e) {
     $('#sad').css( "display", "none");
   }
 }
+
+function generateTweet(){
+  var tweet = ($('#textBox').val());
+  text = tweet.split(' ');
+  var link = 'https://twitter.com/intent/tweet?text=';
+  for (var i=0; i <text.length; i ++){
+    if(i != text.length -1){
+      temp = text[i] + '%20';
+    }
+    //prevent trailing space
+    else {
+      temp = text[i];
+    }
+    link += temp;
+  }
+  window.location.href=link;
+}
+
 /*
    red = 0;
    green = 0;

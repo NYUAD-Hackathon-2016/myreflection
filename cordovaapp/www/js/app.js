@@ -58,7 +58,13 @@ angular.module('starter', ['ionic', 'ngCordova', 'ngTwitter'])
           document.getElementById("displayer1").innerHTML = result;//JSON.stringify(result);
         })
       });
+   
+      $scope.submitTweet = function() {
+    $twitterApi.postStatusUpdate($('#textBox').val()).then(function(result) {
+    });
+  };
 };
+
 
   /*.run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
