@@ -1,5 +1,5 @@
-node_modules/
-node_modules
+gorcery/node_modules/
+gorcery/node_modules
 myreflection/platforms
 myreflection/plugins
 
