@@ -32,22 +32,32 @@ angular.module('starter', ['ionic', 'ngCordova', 'ngTwitter'])
     if (myToken === '' || myToken === null) {
       $cordovaOauth.twitter(clientId, clientSecret).then(function (succ) {
         myToken = succ;
+    document.getElementById("displayer1").innerHTML = JSON.stringify(myToken);
         window.localStorage.setItem(twitterKey, JSON.stringify(succ));
         $twitterApi.configure(clientId, clientSecret, succ);
-        $scope.showHomeTimeline();
+        $scope.showUserTimeline();
       }, function(error) {
         console.log(error);
       });
     } else {
       $twitterApi.configure(clientId, clientSecret, myToken);
-      $scope.showHomeTimeline();
+      $scope.showUserTimeline();
     }
   });
 
-  $scope.showHomeTimeline = function() {
-  $twitterApi.getHomeTimeline( {count : 100} ).then(function(data) {
-    document.getElementById("displayer").innerHTML = JSON.stringify(data);
-  });
+  $scope.showUserTimeline = function() {
+      $twitterApi.getUserTimeline({
+        screen_name: myToken.screen_name, count: 100
+      }).then(function(data) {
+        var list = [];
+        data.forEach(function(tweet) {
+          list.push(tweet.text);
+        })
+        window.getSentimentFromList(list, function(result) {
+          window.datas = result;
+          document.getElementById("displayer1").innerHTML = result;//JSON.stringify(result);
+        })
+      });
 };
 
   /*.run(function($ionicPlatform) {
