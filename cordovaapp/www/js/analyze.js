@@ -13,6 +13,8 @@ function rgbToHex(r, g, b) {
 }
 
 function getSentimentFromTweet(tweet, callback){
+  console.log("I am in function");
+  //var tempTweet = "Life is life. I am full of love!";ue;
   $.ajax({
     type: "POST",
     url: "http://localhost:3000/post",
@@ -21,7 +23,6 @@ function getSentimentFromTweet(tweet, callback){
     dataType: "json",
     success: function(data) {
       sentimentValue = data.status;
-      sentimentList.push(data.status);
       if(callback){
         callback();
       }
@@ -29,7 +30,6 @@ function getSentimentFromTweet(tweet, callback){
     error: function(error) {
       console.log("ERROR");
       console.log(error);
-      sentimentList.push(null);
     }
   });
 }
@@ -53,37 +53,41 @@ function check(length, callback) {
           }
         }
         average = average / sentimentList.length;
+
         return callback([positive_count, negative_count, neutral_count]);
   } else {
     setInterval(check.bind(null, length, callback), 1000);
   }
 }
 var getSentimentFromList = function(list, callback){
-  positive_count = 0;
-  negative_count = 0;
-  neutral_count = 0;
-  average = 0;
+        console.log("I am in function");
 
-  sentimentList = [];
+        positive_count = 0;
+        negative_count = 0;
+        neutral_count = 0;
+        average = 0;
 
-  for(var i = 0; i < list.length; i++ ){
-    getSentimentFromTweet(list[i]);
-    average = average + sentimentValue;
-    if(sentimentValue > 0){
-      positive_count++;
-    } else if (sentimentValue < 0 ){
-      negative_count++;
-    }else{
-      neutral_count++;
-    }
-  }
-  average = average / list.length;
+        sentimentList = [];
 
-  if (callback) {
-    setInterval(check.bind(null, list.length, callback), 1000);
-  }
+        //var tempTweet = "Life is life. I am full of love!";ue;
+        for(var i = 0; i < list.length; i++ ){
+          getSentimentFromTweet(list[i]);
+          average = average + sentimentValue;
+          if(sentimentValue > 0){
+            positive_count++;
+          } else if (sentimentValue < 0 ){
+            negative_count++;
+          }else{
+            neutral_count++;
+          }
+        }
+        average = average / list.length;
 
-  return [positive_count, negative_count, neutral_count];
+        if (callback) {
+          setInterval(check.bind(null, list.length, callback), 1000);
+        }
+
+        return [positive_count, negative_count, neutral_count];
 }
 window.getSentimentFromList = getSentimentFromList;
 
@@ -127,7 +131,6 @@ function updateText(){
         }
       });
 }
-
 function generateTweet(){
   var tweet = ($('#textBox').val());
   text = tweet.split(' ');
