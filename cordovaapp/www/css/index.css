@@ -1,7 +1,19 @@
 /*my stuff!*/
 /*------------------------------------*/
 
-.btn, input[type=submit]  {
+input[type=text] {
+  background-color:white;
+  border:none;
+  display: block;
+  font-family: 'Pompiere', cursive;
+  font-size:50px;
+  height: 140px;
+  margin: 0 auto;
+  text-align:center;
+  width: 335px;
+}
+
+.btn{
   background-color:#EAA172;
   border:none;
   display: block;
@@ -17,15 +29,20 @@
   background-color:yellow;
 }
 
-.check {
-  background-color:black;
-  border: none;
-  display: inline;
-  font-family: 'Lato';
-  font-size: 12px;
-  height: 14px;
-  margin: 0 auto;
+a, .nav {
+  color:#EAA172;
+  font-family: 'Pompiere', cursive;
+  font-size: 23px;
   text-align: center;
+  text-decoration: none;
+}
+
+a:hover {
+  color:yellow;
+}
+
+a:active {
+ color:black;
 }
 
 body {
@@ -50,27 +67,33 @@ h3 {
 h4 {
   color:#D3D3D3;
   font-family: 'Pompiere', cursive;
-  font-size: 40px;
+  font-size: 45px;
   text-align:center;
 }
 
 h5 {
   color:#D3D3D3;
   font-family: 'Pompiere', cursive;
-  font-size: 19px;
+  font-size: 22px;
   text-align:center;
   text-decoration: italic;
 }
 
-input[type=text] {
-  background-color:#EAA172;
-  border: none;
-  display: inline;
-  font-family: 'Lato';
-  font-size: 12px;
-  height: 140px;
+h6 {
+  font-size:60px;
+  text-align:center;
+}
+
+input[type=text name=tweet] {
+  background-color:white;
+  border:none;
+  display: block;
+  font-family: 'Pompiere', cursive;
+  font-size:20px;
+  line-height: 70px;
   margin: 0 auto;
-  text-align: center;
+  text-align:center;
+  width: 335px;
 }
 /*------------------------------------*/
 
