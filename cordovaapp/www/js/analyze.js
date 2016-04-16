@@ -12,7 +12,7 @@ function rgbToHex(r, g, b) {
   return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
 }
 
-function getSentimentFromTweet(tweet){
+function getSentimentFromTweet(tweet, callback){
   $.ajax({
     type: "POST",
     url: "http://localhost:3000/post",
@@ -22,6 +22,9 @@ function getSentimentFromTweet(tweet){
     success: function(data) {
       sentimentValue = data.status;
       sentimentList.push(data.status);
+      if(callback){
+        callback();
+      }
     },
     error: function(error) {
       console.log("ERROR");
@@ -31,7 +34,6 @@ function getSentimentFromTweet(tweet){
   });
 }
 
-window.addEventListener("keyup", checkKeyPressed, false);
 
 function check(length, callback) {
   if (sentimentList.length === length) {
@@ -40,19 +42,18 @@ function check(length, callback) {
     neutral_count = 0;
     average = 0;
     for(var i = 0; i < sentimentList.length; i++ ){
-      var sentimentValue = sentimentList[i];
-      average = average + sentimentValue;
-      if(sentimentValue > 0){
-        positive_count++;
-      } else if (sentimentValue < 0 ){
-        negative_count++;
-      }else{
-        neutral_count++;
-      }
-    }
-    average = average / sentimentList.length;
-
-    return callback([positive_count, negative_count, neutral_count, average]);
+          var sentimentValue = sentimentList[i];
+          average = average + sentimentValue;
+          if(sentimentValue > 0){
+            positive_count++;
+          } else if (sentimentValue < 0 ){
+            negative_count++;
+          }else{
+            neutral_count++;
+          }
+        }
+        average = average / sentimentList.length;
+        return callback([positive_count, negative_count, neutral_count]);
   } else {
     setInterval(check.bind(null, length, callback), 1000);
   }
@@ -86,33 +87,45 @@ var getSentimentFromList = function(list, callback){
 }
 window.getSentimentFromList = getSentimentFromList;
 
+$(window).on("input", function() {
+    updateText();
 
-function checkKeyPressed(e) {
-  var text = $('#textBox').val();
-  getSentimentFromTweet(text);
-  console.log(sentimentValue);
-  console.log(text);
-  $('#textBox').css( "border", "solid" );
-  $('#textBox').css( "border-width", "10px");
-  $('#happy').css( "display", "none");
-  $('#sad').css( "display", "none");
-  $('#netural').css( "display", "none");
-  if (sentimentValue > 0){
-    $('#textBox').css( "border-color", "#66FF00");
-    $('#happy').css( "display", "inline");
-    $('#sad').css( "display", "none");
-    $('#netural').css( "display", "none");
-  } else if (sentimentValue < 0){
-    $('#textBox').css( "border-color", "#FF0033");
-    $('#sad').css( "display", "inline");
-    $('#happy').css( "display", "none");
-    $('#netural').css( "display", "none");
-  }else{
-    $('#textBox').css( "border-color", "#3300FF");
-    $('#netural').css( "display", "inline");
-    $('#happy').css( "display", "none");
-    $('#sad').css( "display", "none");
-  }
+});
+
+function updateText(){
+    var text = $('#textBox').val();
+     
+      getSentimentFromTweet(text, function(){
+
+        $('#textBox').css( "border", "solid" );
+        $('#textBox').css( "border-width", "10px");
+        
+        $('#happy').css( "display", "none");
+        $('#sad').css( "display", "none");
+        $('#netural').css( "display", "none");
+
+
+        if (sentimentValue > 0){
+          $('#textBox').css( "border-color", "#66FF00");
+
+          $('#happy').css( "display", "inline");
+          $('#sad').css( "display", "none");
+          $('#netural').css( "display", "none");
+
+        } else if (sentimentValue < 0){
+          $('#textBox').css( "border-color", "#FF0033");
+
+          $('#sad').css( "display", "inline");
+          $('#happy').css( "display", "none");
+          $('#netural').css( "display", "none");
+
+        }else{
+          $('#textBox').css( "border-color", "#3300FF");
+          $('#netural').css( "display", "inline");
+          $('#happy').css( "display", "none");
+          $('#sad').css( "display", "none");
+        }
+      });
 }
 
 function generateTweet(){

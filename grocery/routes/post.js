@@ -12,11 +12,11 @@ router.post('/', function(req, res, next) {
 	googleTranslate.translate(tweet, 'en', function(err, translation) {
 		console.log(translation.translatedText);
 		arabic = translation.translatedText;
+		sentimentValue = sentimentAnalysis(arabic);
+		console.log(sentimentValue);
+		res.json({status: sentimentValue});
 	});
 
-  sentimentValue = sentimentAnalysis(arabic);
-  console.log(sentimentValue);
-  res.json({status: sentimentValue});
 });
 
 module.exports = router;

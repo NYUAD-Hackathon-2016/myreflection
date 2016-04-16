@@ -55,6 +55,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'ngTwitter'])
         })
         window.getSentimentFromList(list, function(result) {
           window.datas = result;
+          $.FlotChart.createPieGraph("#pie-chart #pie-chart-container", ["Positive", "Negative", "Neutral"], result, ["#3bafda", "#CF4647", "#CACACA"]);
           document.getElementById("displayer1").innerHTML = result;//JSON.stringify(result);
         })
       });
