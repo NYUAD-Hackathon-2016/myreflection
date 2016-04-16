@@ -1,5 +1,3 @@
-alert("how?");
-getSentimentFromTweet("I love the world!");
 /*
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
@@ -18,6 +16,7 @@ getSentimentFromTweet("I love the world!");
  * specific language governing permissions and limitations
  * under the License.
  */
+
 var app = {
     // Application Constructor
     initialize: function() {
