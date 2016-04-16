@@ -14,7 +14,7 @@ function rgbToHex(r, g, b) {
 
 function getSentimentFromTweet(tweet){
         console.log("I am in functiuo");
-        //var tempTweet = "Life is life. I am full of love!";ue;
+        //var tempTweet = "Life is life. I am full of love!"
 
         $.ajax({
           type: "POST",
