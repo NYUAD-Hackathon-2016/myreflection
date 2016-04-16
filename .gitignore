@@ -8,5 +8,8 @@ myreflection/plugins
 cordovaapp/platform
 cordovaapp/platforms/
 platforms/
+<<<<<<< HEAD
+>>>>>>> b64907a28b435744261b6d4de42dd13a87b233ec
+=======
 >>>>>>> b64907a28b435744261b6d4de42dd13a87b233ec
 cordovaapp/platforms
