@@ -23,9 +23,8 @@ function getSentimentFromTweet(tweet){
 window.addEventListener("keypress", checkKeyPressed, false);
  
 function checkKeyPressed(e) {
-    if (e.keyCode == "32") {
       var text = $('#textBox').val();
       console.log(text);
       getSentimentFromTweet(text);
-    }
+  
 }
