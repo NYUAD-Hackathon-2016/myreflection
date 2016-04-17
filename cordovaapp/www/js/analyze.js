@@ -13,8 +13,6 @@ function rgbToHex(r, g, b) {
 }
 
 function getSentimentFromTweet(tweet, callback){
-  console.log("I am in function");
-  //var tempTweet = "Life is life. I am full of love!";ue;
   $.ajax({
     type: "POST",
     url: "http://localhost:3000/post",
@@ -132,6 +130,7 @@ function updateText(){
       });
 }
 function generateTweet(){
+  $('#textBox').css( "border-color", "pink");
   var tweet = ($('#textBox').val());
   text = tweet.split(' ');
   var link = 'https://twitter.com/intent/tweet?text=';
@@ -146,32 +145,5 @@ function generateTweet(){
     link += temp;
   }
   window.location.href=link;
+  //window.location.replace(link);
 }
-
-/*
-   red = 0;
-   green = 0;
-   blue = 0;
-   negativeSentMax = -1;
-   positiveSentMax = 1;
-   sentMin = 0;
-   modifier = 1;
-   if (sentimentValue > 0){
-   green = sentimentValue * modifier * 255;
-   if (green > 255){green = 255}
-   blue = 255 - green;
-   } else {
-   red = sentimentValue * -modifier * 255;
-   if (red > 255){red = 255}
-   blue = 255 - red;
-   }
-
-   $('#textBox').css( "border", "solid" );
-   if (sentimentValue > 0){
-   $('#textBox').css( "border-color", rgbToHex(red,green,blue));
-   } else if (sentimentValue < 0){
-   $('#textBox').css( "border-color", rgbToHex(red,green,blue));
-   }else{
-   $('#textBox').css( "border-color", rgbToHex(red,green,blue));
-   }
-   */
