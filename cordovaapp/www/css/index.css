@@ -135,7 +135,9 @@ input[type=text name=tweet] {
                                       /* offset horizontal: half of image width and text area width */
     }
 }
-
+.ui-loader h1{
+  visibility:hidden;
+}
 h1 {
     font-size:24px;
     font-weight:normal;
