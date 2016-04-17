@@ -64,7 +64,6 @@ function check(length, callback) {
 }
 var getSentimentFromList = function(list, callback){
         console.log("I am in function");
-
         positive_count = 0;
         negative_count = 0;
         neutral_count = 0;
@@ -106,28 +105,29 @@ function updateText(){
 
         $('#textBox').css( "border", "solid" );
         $('#textBox').css( "border-width", "10px");
-        
+        $('#textBox').css( "border-color", "#CACACA");
+
         $('#happy').css( "display", "none");
         $('#sad').css( "display", "none");
         $('#netural').css( "display", "none");
 
 
         if (sentimentValue > 0){
-          $('#textBox').css( "border-color", "#66FF00");
+          $('#textBox').css( "border-color", "#3bafda");
 
           $('#happy').css( "display", "inline");
           $('#sad').css( "display", "none");
           $('#netural').css( "display", "none");
 
         } else if (sentimentValue < 0){
-          $('#textBox').css( "border-color", "#FF0033");
+          $('#textBox').css( "border-color", "#CF4647");
 
           $('#sad').css( "display", "inline");
           $('#happy').css( "display", "none");
           $('#netural').css( "display", "none");
 
         }else{
-          $('#textBox').css( "border-color", "#3300FF");
+          $('#textBox').css( "border-color", "#CACACA");
           $('#netural').css( "display", "inline");
           $('#happy').css( "display", "none");
           $('#sad').css( "display", "none");
