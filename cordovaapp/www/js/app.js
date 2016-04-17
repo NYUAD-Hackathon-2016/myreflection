@@ -55,7 +55,8 @@ angular.module('starter', ['ionic', 'ngCordova', 'ngTwitter'])
           list.push(tweet.text);
         })
         window.getSentimentFromList(list, function(result) {
-          document.getElementById("displayer1").innerHTML = result;//JSON.stringify(result);
+          //document.getElementById("displayer1").innerHTML = result;//JSON.stringify(result);
+          $("#wait").css("display", "inline");
         })
       });
    
