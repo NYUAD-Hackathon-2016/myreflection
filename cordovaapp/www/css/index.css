@@ -1,7 +1,7 @@
 /*my stuff!*/
 /*------------------------------------*/
 
-input[type=text] {
+textarea[type=text] {
   background-color:white;
   border:none;
   display: block;
@@ -96,7 +96,7 @@ h5 {
   
 }
 
-input[type=text name=tweet] {
+textarea[type=text name=tweet] {
   background-color:white;
   border:none;
   display: block;
