@@ -13,7 +13,7 @@
    Common
  =============*/
 body {
-  background: #f5f5f5;
+  background: #98D9B6;;
   font-family: 'Noto Sans', sans-serif;
   margin: 0;
   color: #4c5667;
@@ -31,9 +31,11 @@ h3,
 h4,
 h5,
 h6 {
-  color: #505458;
-  font-family: 'Roboto', sans-serif;
-  margin: 10px 0;
+  color:#ffffff;
+  font-family: 'Pompiere', cursive;
+  font-size: 22px;
+  text-align:center;
+  text-decoration: italic;
 }
 h1 {
   line-height: 43px;
