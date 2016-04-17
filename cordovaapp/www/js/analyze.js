@@ -51,6 +51,10 @@ function check(length, callback) {
           }
         }
         average = average / sentimentList.length;
+        Cookies.set('positive',positive_count);
+        Cookies.set('negative',negative_count);
+        Cookies.set('neutral',neutral_count);
+        console.log(Cookies.get('positive'));
 
         return callback([positive_count, negative_count, neutral_count]);
   } else {

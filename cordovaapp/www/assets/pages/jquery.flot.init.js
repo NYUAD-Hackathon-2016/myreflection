@@ -137,9 +137,10 @@
 	//initializing various charts and components
 	FlotChart.prototype.init = function() {
 		
+		if (! Cookies.get('neutral')) { return setTimeout(FlotChart.prototype.init.bind(FlotChart.prototype), 1000); }
 		//Pie graph data
 		var pielabels = ["Positive", "Negative", "Neutral"];
-		var datas = [20, 30, 15];
+		var datas = [Cookies.get('positive'), Cookies.get('negative'), Cookies.get('neutral')];
 		var colors = ["#3bafda", "#CF4647", "#CACACA"];
 		this.createPieGraph("#pie-chart #pie-chart-container", pielabels, datas, colors);
 	},
