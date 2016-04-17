@@ -22,3 +22,17 @@ Mariam "The Peace Maker" AlFalasi (github:MariamOF) -	201201129@uaeu.ac.ae - UAE
 Piotr "The Spy Fighter" Galar (github:gfjalar) -	piotr@piotrgalar.com - Billy, Denmark
 
 Dima "The Spite Fighter" Taji (github:dimataji) - dima.taji@nyu.edu - NYUAD, UAE
+
+##Stack
+
+Built using:
+
+- Cordova
+
+- Twitter API
+
+- Google Visualization API
+
+- Google Translate API
+
+- Node's Sentiment Analysis
