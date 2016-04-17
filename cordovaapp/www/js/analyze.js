@@ -1,5 +1,5 @@
 var sentimentValue;
-var sentimentList;
+var sentimentList = [];
 var positiveList = ["That sounds good! Go ahead and share it with the world!", "I am sure someone would be happy to read this.", "This brings a smile to the heart."];
 var negatveList  = ["These can hurt someone.", "Readings this can spark a fight.", "Please read what you wrote once again."];
 
