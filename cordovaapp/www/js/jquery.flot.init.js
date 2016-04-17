@@ -332,18 +332,9 @@
 
 	//initializing various charts and components
 	FlotChart.prototype.init = function() {
-		//plot graph data
-		var uploads = [[0, 9], [1, 8], [2, 5], [3, 8], [4, 5], [5, 14], [6, 10]];
-		var downloads = [[0, 5], [1, 12], [2, 4], [3, 3], [4, 12], [5, 11], [6, 14]];
-		var plabels = ["Positif", "Negative"];
-		var pcolors = ['#3bafda', '#CF4647'];
-		var borderColor = '#f5f5f5';
-		var bgColor = '#fff';
-		this.createPlotGraph("#website-stats", uploads, downloads, plabels, pcolors, borderColor, bgColor);
-
 		//Pie graph data
 		var pielabels = ["Positive", "Negative", "Neutral"];
-		var datas = [20, 30, 15];
+		var datas = [Cookies.get('positive'), Cookies.get('negative'), Cookies.get('neutral')];
 		var colors = ["#3bafda", "#CF4647", "#CACACA"];
 		this.createPieGraph("#pie-chart #pie-chart-container", pielabels, datas, colors);
 	},

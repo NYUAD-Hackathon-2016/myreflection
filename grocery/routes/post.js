@@ -16,7 +16,6 @@ router.post('/', function(req, res, next) {
 		console.log(sentimentValue);
 		res.json({status: sentimentValue});
 	});
-
 });
 
 module.exports = router;

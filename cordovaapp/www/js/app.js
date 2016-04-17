@@ -19,6 +19,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'ngTwitter'])
 })*/
 
 .controller('AppCtrl', function($scope, $ionicPlatform, $twitterApi, $cordovaOauth) {
+
   var twitterKey = 'STORAGE.TWITTER.KEY';
   var clientId = 'gkz0JYaCVkxWRdG0jVJONclzD';
   var clientSecret = 'RDmlx6TlYJKxt4VLcQog3m9LP9mwPFO6tdJTisriRWg7YllEPh';
@@ -54,9 +55,8 @@ angular.module('starter', ['ionic', 'ngCordova', 'ngTwitter'])
           list.push(tweet.text);
         })
         window.getSentimentFromList(list, function(result) {
-          window.datas = result;
-          $.FlotChart.createPieGraph("#pie-chart #pie-chart-container", ["Positive", "Negative", "Neutral"], result, ["#3bafda", "#CF4647", "#CACACA"]);
-          document.getElementById("displayer1").innerHTML = result;//JSON.stringify(result);
+          //document.getElementById("displayer1").innerHTML = result;//JSON.stringify(result);
+          $("#wait").css("display", "inline");
         })
       });
    

@@ -21,6 +21,7 @@ function getSentimentFromTweet(tweet, callback){
     dataType: "json",
     success: function(data) {
       sentimentValue = data.status;
+      sentimentList.push(data.status);
       if(callback){
         callback();
       }
@@ -51,6 +52,10 @@ function check(length, callback) {
           }
         }
         average = average / sentimentList.length;
+        Cookies.set('positive',positive_count);
+        Cookies.set('negative',negative_count);
+        Cookies.set('neutral',neutral_count);
+        console.log(Cookies.get('positive'));
 
         return callback([positive_count, negative_count, neutral_count]);
   } else {
