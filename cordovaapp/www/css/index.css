@@ -84,6 +84,7 @@ h4 {
   font-family: 'Pompiere', cursive;
   font-size: 45px;
   text-align:center;
+  
 }
 
 h5 {
@@ -92,6 +93,7 @@ h5 {
   font-size: 22px;
   text-align:center;
   text-decoration: italic;
+  
 }
 
 input[type=text name=tweet] {
