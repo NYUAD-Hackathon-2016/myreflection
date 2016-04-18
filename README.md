@@ -6,6 +6,12 @@ Our app allows users to check the sentiment of their tweet before tweeting.
 It also allows them to survey their tweet history and shows the sentiments of the user's twitter history.
 Our app supports multiple languages.
 
+To run
+
+- cd into 'grocery' and run `node` for the first server
+- at the same time, cd into `cordovaapp/and run `cordova prepare` and then `cordova run [format]'
+- format can be `ios`, `android`, or `browser`
+
 ## Hackers
 
 Paula "Mulan" Dozsa (github:paulacodes) - pvd233@nyu.edu - NYUAD, UAE
